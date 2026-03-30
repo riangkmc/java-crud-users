@@ -3,7 +3,7 @@
 
     <persistence-unit name="faculdade_sistema" transaction-type="RESOURCE_LOCAL">
 
-        <class>org.trabalho1.model.entities.Aluno</class>
+        <class>org.projeto.model.entities.Aluno</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/faculdade_sistema"/>
