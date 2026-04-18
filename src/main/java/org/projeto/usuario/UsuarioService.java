@@ -30,14 +30,26 @@ public class UsuarioService {
 
     }
 
+    public UsuarioResponse toResponse(Usuario usuario){
+        UsuarioResponse dto = new UsuarioResponse();
+        dto.setId(usuario.getId());
+        dto.setNome(usuario.getNome());
+        dto.setEmail(usuario.getNome());
+        dto.setDataNascimento(usuario.getDataNascimento());
+
+        return dto;
+    }
+
+
+    public List<UsuarioResponse> listarTodos() {
+        return UsuarioRepository.findAll().stream()
+                .map(usuario -> this.toResponse(usuario)).toList();
+    }
 
     @Transactional
     public Usuario buscarPorId(Long id) {
         return UsuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
-    }
-    public List<Usuario> listarTodos() {
-        return UsuarioRepository.findAll();
     }
 
     public Usuario atualizar(Usuario Usuario) {
