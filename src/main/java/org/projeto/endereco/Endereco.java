@@ -43,6 +43,7 @@ public class Endereco {
     }
     public Long getId() { return id; }
 
+
     public String getRua() { return rua; }
     public void setRua(String rua) { this.rua = rua; }
 

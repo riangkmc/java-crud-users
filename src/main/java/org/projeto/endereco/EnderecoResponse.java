@@ -10,7 +10,7 @@ public class EnderecoResponse {
     private String cidade;
     private String estado;
     private String cep;
-    private Usuario usuario;
+
 
 
 
@@ -25,12 +25,15 @@ public class EnderecoResponse {
     public String getCidade() { return cidade; }
     public void setCidade(String cidade) { this.cidade = cidade; }
 
-    public String getEstado() { return estado; }
+    public String getEstado() { return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public String getCep() { return cep; }
     public void setCep(String cep) { this.cep = cep; }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 
 }

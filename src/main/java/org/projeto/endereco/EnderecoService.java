@@ -27,13 +27,16 @@ public class EnderecoService {
         dto.setId(endereco.getId());
         dto.setRua(endereco.getRua());
         dto.setCep(endereco.getCep());
+        dto.setEstado(endereco.getEstado());
         dto.setCidade(endereco.getCidade());
-        dto.setUsuario(endereco.getUsuario());
+
         return dto;
     }
 
-    public List<Endereco> listarTodos() {
-        return EnderecoRepository.findAll();
+    @Transactional
+    public List<EnderecoResponse> listarTodos() {
+        return EnderecoRepository.findAll().stream()
+                .map(endereco -> this.toResponse(endereco)).toList();
     }
 
     @Transactional
