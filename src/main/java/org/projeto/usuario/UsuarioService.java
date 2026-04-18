@@ -34,7 +34,8 @@ public class UsuarioService {
         UsuarioResponse dto = new UsuarioResponse();
         dto.setId(usuario.getId());
         dto.setNome(usuario.getNome());
-        dto.setEmail(usuario.getNome());
+        dto.setEmail(usuario.getEmail());
+        dto.setCpf(usuario.getCpf());
         dto.setDataNascimento(usuario.getDataNascimento());
 
         return dto;
