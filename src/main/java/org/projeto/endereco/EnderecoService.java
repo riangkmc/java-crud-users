@@ -22,13 +22,24 @@ public class EnderecoService {
     }
 
 
+    public EnderecoResponse toResponse(Endereco endereco){
+        EnderecoResponse dto = new EnderecoResponse();
+        dto.setId(endereco.getId());
+        dto.setRua(endereco.getRua());
+        dto.setCep(endereco.getCep());
+        dto.setCidade(endereco.getCidade());
+        dto.setUsuario(endereco.getUsuario());
+        return dto;
+    }
+
+    public List<Endereco> listarTodos() {
+        return EnderecoRepository.findAll();
+    }
+
     @Transactional
     public Endereco buscarPorId(Long id) {
         return EnderecoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Endereco não encontrado"));
-    }
-    public List<Endereco> listarTodos() {
-        return EnderecoRepository.findAll();
     }
 
 

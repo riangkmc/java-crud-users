@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
-
+/*
         Usuario usuario = new Usuario("Rian","rianbrdelgado@gmail.com","12345678910", LocalDate.of(2005,9,28));
 
         Endereco endereco1 = new Endereco("Rua da gela","Juiz de fora","MG","24912322");
@@ -30,7 +30,7 @@ public class Main {
         UsuarioService usuarioService = context.getBean(UsuarioService.class);
         usuarioService.salvar(usuario);
 
-
+*/
 
     }
 }
