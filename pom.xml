@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>org.projeto</groupId>
-    <artifactId>dbe</artifactId>
+    <artifactId>cju</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>contratopagamentos</name>
     <description>Projeto de quebra de contratos em parcelas</description>
@@ -61,14 +61,14 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <systemPropertyVariables>
-                        <pagamento_servico.jdbc.driver>org.h2.Driver</pagamento_servico.jdbc.driver>
-                        <pagamento_servico.jdbc.url>jdbc:h2:mem:pagamento_servico;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE</pagamento_servico.jdbc.url>
-                        <pagamento_servico.jdbc.user>sa</pagamento_servico.jdbc.user>
-                        <pagamento_servico.jdbc.password>unused</pagamento_servico.jdbc.password>
-                        <pagamento_servico.hibernate.dialect>org.hibernate.dialect.H2Dialect</pagamento_servico.hibernate.dialect>
-                        <pagamento_servico.hibernate.ddl-auto>create-drop</pagamento_servico.hibernate.ddl-auto>
-                        <pagamento_servico.hibernate.show-sql>false</pagamento_servico.hibernate.show-sql>
-                        <pagamento_servico.hibernate.format-sql>false</pagamento_servico.hibernate.format-sql>
+                        <crud_users.jdbc.driver>org.h2.Driver</crud_users.jdbc.driver>
+                        <crud_users.jdbc.url>jdbc:h2:mem:crud_users;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE</crud_users.jdbc.url>
+                        <crud_users.jdbc.user>sa</crud_users.jdbc.user>
+                        <crud_users.jdbc.password>unused</crud_users.jdbc.password>
+                        <crud_users.hibernate.dialect>org.hibernate.dialect.H2Dialect</crud_users.hibernate.dialect>
+                        <crud_users.hibernate.ddl-auto>create-drop</crud_users.hibernate.ddl-auto>
+                        <crud_users.hibernate.show-sql>false</crud_users.hibernate.show-sql>
+                        <crud_users.hibernate.format-sql>false</crud_users.hibernate.format-sql>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

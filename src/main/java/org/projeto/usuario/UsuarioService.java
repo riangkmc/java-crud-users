@@ -2,6 +2,7 @@ package org.projeto.usuario;
 
 import jakarta.transaction.Transactional;
 
+import org.projeto.endereco.Endereco;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -21,7 +22,12 @@ public class UsuarioService {
  
 
     public Usuario salvar(Usuario Usuario) {
-        return UsuarioRepository.save(Usuario);
+        try {
+            return UsuarioRepository.save(Usuario);
+        } catch (Exception e) {
+            throw new RuntimeException("erro ao salvar usuario!");
+        }
+
     }
 
 
@@ -29,6 +35,9 @@ public class UsuarioService {
     public Usuario buscarPorId(Long id) {
         return UsuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+    }
+    public List<Usuario> listarTodos() {
+        return UsuarioRepository.findAll();
     }
 
     public Usuario atualizar(Usuario Usuario) {
