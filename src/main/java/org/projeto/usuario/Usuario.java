@@ -1,6 +1,7 @@
 package org.projeto.usuario;
 
 import jakarta.persistence.*;
+import org.projeto.config.Auditable;
 import org.projeto.endereco.Endereco;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-public class Usuario {
+public class Usuario extends Auditable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

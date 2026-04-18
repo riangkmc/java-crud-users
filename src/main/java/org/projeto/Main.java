@@ -16,11 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
-/*
-        Usuario usuario = new Usuario("Rian","rianbrdelgado@gmail.com","12345678910", LocalDate.of(2005,9,28));
 
-        Endereco endereco1 = new Endereco("Rua da gela","Juiz de fora","MG","24912322");
-        Endereco endereco2 = new Endereco("Rua da vieria","Juiz de fora","MG","24322322");
+        /*Usuario usuario = new Usuario("Marcelo","MarceloeBraga@gmail.com","12345678912", LocalDate.of(1923,1,28));
+
+        Endereco endereco1 = new Endereco("Rua da hel"," Lima duarte","MG","24912322");
+        Endereco endereco2 = new Endereco("Rua da vis","Juiz de fora","MG","24322322");
 
         usuario.adicionarEndereco(endereco1);
         usuario.adicionarEndereco(endereco2);
@@ -29,8 +29,8 @@ public class Main {
 
         UsuarioService usuarioService = context.getBean(UsuarioService.class);
         usuarioService.salvar(usuario);
-
 */
+
 
     }
 }

@@ -1,11 +1,12 @@
 package org.projeto.endereco;
 
 import jakarta.persistence.*;
+import org.projeto.config.Auditable;
 import org.projeto.usuario.Usuario;
 
 @Entity
 @Table(name = "endereco")
-public class Endereco {
+public class Endereco  extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
