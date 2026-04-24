@@ -2,13 +2,9 @@ package org.projeto.endereco;
 
 import jakarta.transaction.Transactional;
 
-import org.projeto.endereco.Endereco;
-import org.projeto.endereco.EnderecoRepository;
+import org.projeto.endereco.dto.EnderecoResponse;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,28 +18,17 @@ public class EnderecoService {
     }
 
 
-    public EnderecoResponse toResponse(Endereco endereco){
-        EnderecoResponse dto = new EnderecoResponse();
-        dto.setId(endereco.getId());
-        dto.setRua(endereco.getRua());
-        dto.setCep(endereco.getCep());
-        dto.setEstado(endereco.getEstado());
-        dto.setCidade(endereco.getCidade());
-
-        return dto;
-    }
-
     @Transactional
     public List<EnderecoResponse> listarTodos() {
         return EnderecoRepository.findAll().stream()
-                .map(endereco -> this.toResponse(endereco)).toList();
+                .map(endereco -> EnderecoResponse.fromEntity(endereco)).toList();
     }
 
     @Transactional
     public EnderecoResponse buscarPorId(Long id) {
         Endereco endereco = EnderecoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Endereco não encontrado"));
-        return toResponse(endereco);
+        return EnderecoResponse.fromEntity(endereco);
     }
 
 

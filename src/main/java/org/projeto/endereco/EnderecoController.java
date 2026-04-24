@@ -1,6 +1,7 @@
 package org.projeto.endereco;
 
 
+import org.projeto.endereco.dto.EnderecoResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

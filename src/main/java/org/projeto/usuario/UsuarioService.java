@@ -2,13 +2,9 @@ package org.projeto.usuario;
 
 import jakarta.transaction.Transactional;
 
-import org.projeto.endereco.Endereco;
-import org.projeto.endereco.EnderecoResponse;
+import org.projeto.usuario.dto.UsuarioResponse;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -31,40 +27,17 @@ public class UsuarioService {
 
     }
 
-    public UsuarioResponse toResponse(Usuario usuario){
-        UsuarioResponse dto = new UsuarioResponse();
-        dto.setId(usuario.getId());
-        dto.setNome(usuario.getNome());
-        dto.setEmail(usuario.getEmail());
-        dto.setCpf(usuario.getCpf());
-        dto.setDataNascimento(usuario.getDataNascimento());
-        dto.setEnderecos(usuario.getEnderecos().stream()
-                .map(end -> {
-                    EnderecoResponse er = new EnderecoResponse();
-                    er.setId(end.getId());
-                    er.setRua(end.getRua());
-                    er.setCidade(end.getCidade());
-                    er.setEstado(end.getEstado());
-                    er.setCep(end.getCep());
-                    return er;
-                })
-                .toList());
-
-        return dto;
-    }
-
-
     @Transactional
     public List<UsuarioResponse> listarTodos() {
         return UsuarioRepository.findAll().stream()
-                .map(usuario -> this.toResponse(usuario)).toList();
+                .map(usuario -> UsuarioResponse.fromEntity(usuario)).toList();
     }
 
     @Transactional
     public UsuarioResponse buscarPorId(Long id) {
         Usuario usuario = UsuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
-        return toResponse(usuario);
+        return UsuarioResponse.fromEntity(usuario);
     }
 
     public Usuario atualizar(Usuario Usuario) {
