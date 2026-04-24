@@ -40,9 +40,10 @@ public class EnderecoService {
     }
 
     @Transactional
-    public Endereco buscarPorId(Long id) {
-        return EnderecoRepository.findById(id)
+    public EnderecoResponse buscarPorId(Long id) {
+        Endereco endereco = EnderecoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Endereco não encontrado"));
+        return toResponse(endereco);
     }
 
 

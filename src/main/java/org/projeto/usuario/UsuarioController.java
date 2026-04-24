@@ -1,6 +1,7 @@
 package org.projeto.usuario;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class UsuarioController {
     @GetMapping
     public List<UsuarioResponse> listarTodos() {
         return usuarioService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public UsuarioResponse buscarPorId(@PathVariable Long id) {
+        return usuarioService.buscarPorId(id);
     }
 }

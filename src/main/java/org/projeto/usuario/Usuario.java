@@ -1,6 +1,7 @@
 package org.projeto.usuario;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.projeto.config.Auditable;
 import org.projeto.endereco.Endereco;
 
@@ -10,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 public class Usuario extends Auditable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +32,6 @@ public class Usuario extends Auditable {
 
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
-
-    public Usuario() {
-    }
 
     public Usuario(String nome, String email, String cpf, LocalDate dataNascimento) {
         this.nome = nome;

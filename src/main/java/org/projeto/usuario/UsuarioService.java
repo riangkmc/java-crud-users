@@ -48,9 +48,10 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario buscarPorId(Long id) {
-        return UsuarioRepository.findById(id)
+    public UsuarioResponse buscarPorId(Long id) {
+        Usuario usuario = UsuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        return toResponse(usuario);
     }
 
     public Usuario atualizar(Usuario Usuario) {

@@ -17,10 +17,10 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
 
-        /*Usuario usuario = new Usuario("Marcelo","MarceloeBraga@gmail.com","12345678912", LocalDate.of(1923,1,28));
+       /* Usuario usuario = new Usuario("marcio","marcioVitor@gmail.com","12345678919", LocalDate.of(1926,2,18));
 
-        Endereco endereco1 = new Endereco("Rua da hel"," Lima duarte","MG","24912322");
-        Endereco endereco2 = new Endereco("Rua da vis","Juiz de fora","MG","24322322");
+        Endereco endereco1 = new Endereco("Rua da fil","Sao paulo","SP","249123232");
+        Endereco endereco2 = new Endereco("Rua da te","Belo Horizonte","MG","243224322");
 
         usuario.adicionarEndereco(endereco1);
         usuario.adicionarEndereco(endereco2);
