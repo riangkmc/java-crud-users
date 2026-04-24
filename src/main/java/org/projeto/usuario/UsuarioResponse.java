@@ -1,7 +1,9 @@
 package org.projeto.usuario;
 
 
+import org.projeto.endereco.EnderecoResponse;
 import java.time.LocalDate;
+import java.util.List;
 
 public class UsuarioResponse {
 
@@ -10,7 +12,7 @@ public class UsuarioResponse {
     private String email;
     private String cpf;
     private LocalDate dataNascimento;
-    /*private List<Endereco> enderecos = new ArrayList<>();*/
+    private List<EnderecoResponse> enderecos;
 
 
     public long getId() {
@@ -53,13 +55,12 @@ public class UsuarioResponse {
         this.dataNascimento = dataNascimento;
     }
 
-    /*public List<Endereco> getEnderecos() {
-        return Collections.unmodifiableList(enderecos);
+    public List<EnderecoResponse> getEnderecos() {
+        return enderecos;
     }
 
-    public void adicionarEndereco(Endereco endereco){
-        enderecos.add(endereco);
-
-    }*/
+    public void setEnderecos(List<EnderecoResponse> enderecos) {
+        this.enderecos = enderecos;
+    }
 
 }

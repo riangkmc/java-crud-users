@@ -3,6 +3,7 @@ package org.projeto.usuario;
 import jakarta.transaction.Transactional;
 
 import org.projeto.endereco.Endereco;
+import org.projeto.endereco.EnderecoResponse;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -37,11 +38,23 @@ public class UsuarioService {
         dto.setEmail(usuario.getEmail());
         dto.setCpf(usuario.getCpf());
         dto.setDataNascimento(usuario.getDataNascimento());
+        dto.setEnderecos(usuario.getEnderecos().stream()
+                .map(end -> {
+                    EnderecoResponse er = new EnderecoResponse();
+                    er.setId(end.getId());
+                    er.setRua(end.getRua());
+                    er.setCidade(end.getCidade());
+                    er.setEstado(end.getEstado());
+                    er.setCep(end.getCep());
+                    return er;
+                })
+                .toList());
 
         return dto;
     }
 
 
+    @Transactional
     public List<UsuarioResponse> listarTodos() {
         return UsuarioRepository.findAll().stream()
                 .map(usuario -> this.toResponse(usuario)).toList();
