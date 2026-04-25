@@ -27,8 +27,15 @@ public class EnderecoController {
         return enderecoService.buscarPorId(id);
     }
 
-    /*@PostMapping
-    public String criar(@RequestBody EnderecoRequest body){
-        return enderecoService.;
-    }*/
+    /*@DeleteMapping("/{id}")
+    public void removerUsuario(@PathVariable Long id){
+        usuarioService.remover(id);
+    }
+
+    @DeleteMapping
+    public void removerTodos(){
+        usuarioService.removerTodos();}*/
 }
+
+
+

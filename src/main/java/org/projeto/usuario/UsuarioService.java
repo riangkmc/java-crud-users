@@ -19,10 +19,10 @@ public class UsuarioService {
     }
 
 
-    public Usuario salvar(UsuarioRequest usuarioRequest) {
+    public UsuarioResponse salvar(UsuarioRequest usuarioRequest) {
         Usuario tempUser = usuarioRequest.toEntity();
         UsuarioRepository.save(tempUser);
-        return tempUser;
+        return UsuarioResponse.fromEntity(tempUser);
     }
 
     @Transactional
