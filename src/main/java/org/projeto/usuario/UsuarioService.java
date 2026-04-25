@@ -2,6 +2,7 @@ package org.projeto.usuario;
 
 import jakarta.transaction.Transactional;
 
+import org.projeto.usuario.dto.UsuarioRequest;
 import org.projeto.usuario.dto.UsuarioResponse;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,12 @@ public class UsuarioService {
     public UsuarioService(UsuarioRepository UsuarioRepository) {
         this.UsuarioRepository = UsuarioRepository;
     }
- 
 
-    public Usuario salvar(Usuario Usuario) {
-        try {
-            return UsuarioRepository.save(Usuario);
-        } catch (Exception e) {
-            throw new RuntimeException("erro ao salvar usuario!");
-        }
 
+    public Usuario salvar(UsuarioRequest usuarioRequest) {
+        Usuario tempUser = usuarioRequest.toEntity();
+        UsuarioRepository.save(tempUser);
+        return tempUser;
     }
 
     @Transactional

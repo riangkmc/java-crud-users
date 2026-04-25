@@ -1,10 +1,8 @@
 package org.projeto.usuario;
 
+import org.projeto.usuario.dto.UsuarioRequest;
 import org.projeto.usuario.dto.UsuarioResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +25,9 @@ public class UsuarioController {
     public UsuarioResponse buscarPorId(@PathVariable Long id) {
         return usuarioService.buscarPorId(id);
     }
+    @PostMapping
+    public Usuario criar(@RequestBody UsuarioRequest body){
+        return usuarioService.salvar(body);
+    }
+
 }

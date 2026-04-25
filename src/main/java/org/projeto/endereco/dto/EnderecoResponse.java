@@ -8,6 +8,7 @@ public record EnderecoResponse(
         String cidade,
         String estado,
         String cep
+
 ) {
     public static EnderecoResponse fromEntity(Endereco endereco) {
         return new EnderecoResponse(

@@ -1,11 +1,9 @@
 package org.projeto.endereco;
 
 
+import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.endereco.dto.EnderecoResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +26,9 @@ public class EnderecoController {
     public EnderecoResponse buscarPorId(@PathVariable Long id) {
         return enderecoService.buscarPorId(id);
     }
+
+    /*@PostMapping
+    public String criar(@RequestBody EnderecoRequest body){
+        return enderecoService.;
+    }*/
 }
