@@ -1,14 +1,17 @@
 package org.projeto.usuario.dto;
 
+import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.usuario.Usuario;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public record UsuarioRequest(
         String nome,
         String email,
         String cpf,
-        LocalDate dataNascimento
+        LocalDate dataNascimento,
+        List<EnderecoRequest> enderecos
 ) {
     public Usuario toEntity() {
         Usuario usuario = new Usuario();
@@ -16,6 +19,11 @@ public record UsuarioRequest(
         usuario.setEmail(email);
         usuario.setCpf(cpf);
         usuario.setDataNascimento(dataNascimento);
+        if (enderecos != null) {
+            enderecos.forEach(enderecoRequest ->
+                    usuario.adicionarEndereco(enderecoRequest.toEntity())
+            );
+        }
         return usuario;
     }
 }

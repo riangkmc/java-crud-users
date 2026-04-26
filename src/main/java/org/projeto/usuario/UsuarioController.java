@@ -17,11 +17,13 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public List<UsuarioResponse> listarTodos() {
         return usuarioService.listarTodos();
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public UsuarioResponse buscarPorId(@PathVariable Long id) {
         return usuarioService.buscarPorId(id);
@@ -34,11 +36,13 @@ public class UsuarioController {
         return usuarioService.salvar(body);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void removerUsuario(@PathVariable Long id){
         usuarioService.remover(id);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping
     public void removerTodos(){
         usuarioService.removerTodos();

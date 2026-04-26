@@ -1,17 +1,20 @@
 package org.projeto.usuario;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.projeto.config.Auditable;
 import org.projeto.endereco.Endereco;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Usuario extends Auditable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,57 +36,6 @@ public class Usuario extends Auditable {
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 
-    public Usuario(String nome, String email, String cpf, LocalDate dataNascimento) {
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public List<Endereco> getEnderecos() {
-        return Collections.unmodifiableList(enderecos);
-    }
-
     public void adicionarEndereco(Endereco endereco){
         enderecos.add(endereco);
         endereco.setUsuario(this);
@@ -94,13 +46,4 @@ public class Usuario extends Auditable {
         endereco.setUsuario(this);
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                '}';
-    }
 }

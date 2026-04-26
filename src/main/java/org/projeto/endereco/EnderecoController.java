@@ -27,14 +27,14 @@ public class EnderecoController {
         return enderecoService.buscarPorId(id);
     }
 
-    /*@DeleteMapping("/{id}")
-    public void removerUsuario(@PathVariable Long id){
-        usuarioService.remover(id);
+    @DeleteMapping("/{id}")
+    public void removerEndereco(@PathVariable Long id){
+        enderecoService.remover(id);
     }
 
     @DeleteMapping
     public void removerTodos(){
-        usuarioService.removerTodos();}*/
+        enderecoService.removerTodos();}
 }
 
 

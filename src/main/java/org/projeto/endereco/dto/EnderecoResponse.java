@@ -19,4 +19,5 @@ public record EnderecoResponse(
                 endereco.getCep()
         );
     }
+
 }
