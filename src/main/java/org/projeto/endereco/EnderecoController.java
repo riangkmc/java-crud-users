@@ -35,6 +35,11 @@ public class EnderecoController {
     @DeleteMapping
     public void removerTodos(){
         enderecoService.removerTodos();}
+
+    @PutMapping("/{id}")
+    public EnderecoResponse atualizarTudo(@PathVariable Long id,@RequestBody EnderecoRequest enderecoRequest){
+        return enderecoService.atualizar(id,enderecoRequest);
+    }
 }
 
 

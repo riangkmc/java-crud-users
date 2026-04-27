@@ -2,6 +2,7 @@ package org.projeto.usuario;
 
 import jakarta.transaction.Transactional;
 
+import org.projeto.endereco.dto.EnderecoResponse;
 import org.projeto.usuario.dto.UsuarioRequest;
 import org.projeto.usuario.dto.UsuarioResponse;
 import org.springframework.stereotype.Service;
@@ -38,8 +39,26 @@ public class UsuarioService {
         return UsuarioResponse.fromEntity(usuario);
     }
 
-    public Usuario atualizar(Usuario Usuario) {
-        return UsuarioRepository.save(Usuario);
+    @Transactional
+    public UsuarioResponse atualizar(Long id,UsuarioRequest usuarioRequest) {
+        Usuario usuario = UsuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        usuario.setNome(usuarioRequest.nome());
+        usuario.setEmail(usuarioRequest.email());
+        usuario.setCpf(usuarioRequest.cpf());
+        usuario.setDataNascimento(usuarioRequest.dataNascimento());
+        UsuarioRepository.save(usuario);
+        return UsuarioResponse.fromEntity(usuario);
+    }
+
+    @Transactional
+    public List<EnderecoResponse> listarEnderecos(Long Id) {
+        Usuario usuario = UsuarioRepository.findById(Id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        return usuario.getEnderecos().stream()
+                .map(endereco -> EnderecoResponse.fromEntity(endereco))
+                .toList();
     }
 
     public void remover(Long id) {

@@ -2,6 +2,7 @@ package org.projeto.endereco;
 
 import jakarta.transaction.Transactional;
 
+import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.endereco.dto.EnderecoResponse;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,15 @@ public class EnderecoService {
     }
 
 
-    public Endereco atualizar(Endereco Endereco) {
-        return EnderecoRepository.save(Endereco);
+    public EnderecoResponse atualizar(Long id,EnderecoRequest enderecoRequest) {
+        Endereco endereco = EnderecoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Endereco não encontrado"));
+        endereco.setRua(enderecoRequest.rua());
+        endereco.setCep(enderecoRequest.cep());
+        endereco.setCidade(enderecoRequest.cidade());
+        endereco.setEstado(enderecoRequest.estado());
+        EnderecoRepository.save(endereco);
+        return EnderecoResponse.fromEntity(endereco);
     }
 
     public void remover(Long id) {

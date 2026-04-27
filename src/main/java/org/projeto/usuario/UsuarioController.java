@@ -1,5 +1,8 @@
 package org.projeto.usuario;
 
+import io.swagger.v3.oas.annotations.Operation;
+import org.projeto.endereco.dto.EnderecoRequest;
+import org.projeto.endereco.dto.EnderecoResponse;
 import org.projeto.usuario.dto.UsuarioRequest;
 import org.projeto.usuario.dto.UsuarioResponse;
 import org.springframework.http.HttpStatus;
@@ -23,6 +26,12 @@ public class UsuarioController {
         return usuarioService.listarTodos();
     }
 
+    @GetMapping("{id}/enderecos")
+    public List<EnderecoResponse> listarEnderecosDoUsuario(@PathVariable Long id) {
+        return usuarioService.listarEnderecos(id);
+    }
+
+    @Operation(summary = "Buscar usuário por ID")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public UsuarioResponse buscarPorId(@PathVariable Long id) {
@@ -46,6 +55,12 @@ public class UsuarioController {
     @DeleteMapping
     public void removerTodos(){
         usuarioService.removerTodos();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{id}")
+    public UsuarioResponse atualizarTudo(@PathVariable Long id, @RequestBody UsuarioRequest usuarioRequest){
+        return usuarioService.atualizar(id,usuarioRequest);
     }
 
 }
