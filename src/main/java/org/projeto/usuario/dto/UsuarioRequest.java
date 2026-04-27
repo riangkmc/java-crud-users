@@ -20,9 +20,9 @@ public record UsuarioRequest(
         usuario.setCpf(cpf);
         usuario.setDataNascimento(dataNascimento);
         if (enderecos != null) {
-            enderecos.forEach(enderecoRequest ->
-                    usuario.adicionarEndereco(enderecoRequest.toEntity())
-            );
+            for (EnderecoRequest enderecoRequest : enderecos) {
+                usuario.adicionarEndereco(enderecoRequest.toEntity());
+            }
         }
         return usuario;
     }

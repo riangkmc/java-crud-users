@@ -1,6 +1,7 @@
 package org.projeto.endereco;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.endereco.dto.EnderecoResponse;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/enderecos")
+@Tag(name = "enderecos", description = "gerenciador de enderecos")
 public class EnderecoController {
 
     private final EnderecoService enderecoService;

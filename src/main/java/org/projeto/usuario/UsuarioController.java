@@ -1,6 +1,7 @@
 package org.projeto.usuario;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.endereco.dto.EnderecoResponse;
 import org.projeto.usuario.dto.UsuarioRequest;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@Tag(name = "usuarios", description = "gerenciador de usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -31,7 +33,7 @@ public class UsuarioController {
         return usuarioService.listarEnderecos(id);
     }
 
-    @Operation(summary = "Buscar usuário por ID")
+    @Operation(summary = "Buscar usuário por ID", description = "Busca o usuario por id")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public UsuarioResponse buscarPorId(@PathVariable Long id) {
