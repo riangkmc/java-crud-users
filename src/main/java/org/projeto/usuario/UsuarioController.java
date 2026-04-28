@@ -43,8 +43,14 @@ public class UsuarioController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public UsuarioResponse criar(@RequestBody UsuarioRequest body){
+    public UsuarioResponse criarUsuario(@RequestBody UsuarioRequest body){
         return usuarioService.salvar(body);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("{id}/enderecos")
+    public UsuarioResponse criarEndereco(@PathVariable Long id,@RequestBody EnderecoRequest body){
+        return usuarioService.adicionarEndereco(id,body);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

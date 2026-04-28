@@ -2,6 +2,7 @@ package org.projeto.usuario;
 
 import jakarta.transaction.Transactional;
 
+import org.projeto.endereco.dto.EnderecoRequest;
 import org.projeto.endereco.dto.EnderecoResponse;
 import org.projeto.usuario.dto.UsuarioRequest;
 import org.projeto.usuario.dto.UsuarioResponse;
@@ -36,6 +37,15 @@ public class UsuarioService {
     public UsuarioResponse buscarPorId(Long id) {
         Usuario usuario = UsuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        return UsuarioResponse.fromEntity(usuario);
+    }
+
+    @Transactional
+    public UsuarioResponse adicionarEndereco(Long id, EnderecoRequest enderecoRequest) {
+        Usuario usuario = UsuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        usuario.adicionarEndereco(enderecoRequest.toEntity());
+        UsuarioRepository.save(usuario);
         return UsuarioResponse.fromEntity(usuario);
     }
 
