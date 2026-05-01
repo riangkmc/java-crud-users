@@ -2,6 +2,8 @@ package org.projeto.usuario;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
 import org.projeto.config.Auditable;
 import org.projeto.endereco.Endereco;
 
@@ -9,12 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class Usuario extends Auditable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

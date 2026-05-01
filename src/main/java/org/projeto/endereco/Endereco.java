@@ -2,15 +2,13 @@ package org.projeto.endereco;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
 import org.projeto.config.Auditable;
 import org.projeto.usuario.Usuario;
 
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Data
 @Entity
 @Table(name = "endereco")
 public class Endereco  extends Auditable {
