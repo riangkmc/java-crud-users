@@ -1,6 +1,5 @@
 # API de Usuários e Endereços
 
-## Sobre o projeto
 
 API REST desenvolvida como projeto de estudo com o objetivo de aplicar conceitos de desenvolvimento backend utilizando o ecossistema Spring.
 
@@ -19,6 +18,18 @@ A aplicação permite o gerenciamento de usuários e seus respectivos endereços
 
 ---
 
+## Configuração
+
+Configure as credenciais do banco de dados no arquivo `application.properties` ou `application.yml`:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+```
+
+---
+
 ## Como executar o projeto
 
 ```bash
@@ -34,15 +45,7 @@ mvn spring-boot:run
 
 ---
 
-## Configuração
 
-Configure as credenciais do banco de dados no arquivo `application.properties` ou `application.yml`:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
-```
 
 ---
 
